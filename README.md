@@ -40,6 +40,14 @@
 
 Apple 文件說明 macOS 的延伸、鏡像與 AirPlay 能力；MiraScreen 官網亦泛稱支援 Mac，但兩者都不能證明賣場這款 3.97 吋自拍屏已與本專案的 Mac mini 相容。
 
+## 硬體相容性核查
+
+**MiraScreen 3.97 吋目前未通過 Mac mini 相容性驗證，暫不建議採購。** 沒有找到這款的公開顯示 SDK／API，也沒有精確型號的 Mac 延伸顯示證據。一般 AirPlay 教學不足以證明此產品相容。
+
+若 macOS 已將硬體接成獨立延伸螢幕，自研 APP 可使用 Apple 顯示 API，不必依賴 MiraScreen SDK；硬體配對與接通仍需先驗證。
+
+證據、限制與接通驗收條件見 [MiraScreen 開發介面與相容性核查](docs/mirascreen-compatibility-2026-11-11.md)。
+
 ## 第一輪候選
 
 ### MiraScreen 磁吸無線投影自拍螢幕（3.97 吋、AirPlay）
@@ -50,7 +58,7 @@ Apple 文件說明 macOS 的延伸、鏡像與 AirPlay 能力；MiraScreen 官�
 - 價格、庫存與交期以賣家即時確認或結帳為準。
 - 商品頁主要說明手機使用，尚無這個型號在本專案電腦上的連線證據。
 - 精確型號、電腦延伸顯示、邊充邊用、自動休眠與斷線重連仍需確認。
-- 狀態：優先查證候選，尚未定案採購。
+- 狀態：**未通過 Mac mini 相容性驗證，暫不建議採購。**
 
 購買頁：https://online.senao.com.tw/Mart/1392503
 備選賣場：https://mall.iopenmall.tw/056151/index.php?action=product_detail&prod_no=P5615113719001
