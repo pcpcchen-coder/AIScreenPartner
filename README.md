@@ -11,6 +11,12 @@
 - ESP32 方案保留為備選，取消先前的優先推薦。
 - 目前完成需求與候選調查，尚未採購、實機驗證或實作 APP。
 
+## 現成產品與 APP 調查
+
+已找到 codeMeter、Miblo Desk、HSNC AI Meter 等商業成品，以及 CodexBar、QuotaFrame、AI Monitor 等現成軟體或開源方案。
+
+完整比較、價格、Mac 支援與台灣出貨限制，見 [2026-11-11 市場調查](docs/market-survey-2026-11-11.md)。目前建議先評估 CodexBar 作為資料來源；尚未安裝、授權帳號或改變自拍屏選型。
+
 ## 運作方式
 
 1. APP 或同主機的資料收集服務取得各 AI 可用的用量與狀態。
