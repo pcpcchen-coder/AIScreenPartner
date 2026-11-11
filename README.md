@@ -6,7 +6,7 @@
 
 - 使用者指定沿用附件那類「自拍無線投屏小螢幕」。
 - APP 負責資料取得與畫面繪製，小螢幕負責接收投屏畫面。
-- APP 執行端尚待確認：Windows、macOS 或手機；先前偏向電腦端的方案是規劃假設。
+- 已確認 APP 執行端：**Mac mini / macOS**。Mac 晶片型號與 macOS 版本尚未確認，不影響目前將 AirPlay 列為優先查證方向。
 - 硬體不必能安裝 APP、開網頁或刷機；重點是能接收執行端傳來的儀表板畫面。
 - ESP32 方案保留為備選，取消先前的優先推薦。
 - 目前完成需求與候選調查，尚未採購、實機驗證或實作 APP。
@@ -22,28 +22,33 @@
 
 優先驗證「延伸顯示」：APP 在小螢幕全螢幕呈現，主螢幕繼續正常使用。若硬體僅能鏡像整個主畫面，就不符合此目標，除非另有已驗證的獨立視窗投放方式。不能僅因標示支援手機鏡像就宣稱支援電腦延伸顯示。
 
-## APP 執行端與傳輸選擇
+## Mac mini 連線與 APP 方案
 
-| 執行端 | 優先驗證 | 尚待確認 |
-| --- | --- | --- |
-| Windows | Miracast；Win+K 連線、Win+P 選延伸 | 電腦顯示與 Wi-Fi 驅動是否支援 Miracast，以及自拍屏互通性 |
-| macOS | AirPlay，驗證作為獨立顯示器或相容的視窗投放 | 特定自拍屏能否被 Mac 發現、配對及提供所需顯示模式 |
-| 手機 | APP 畫面透過相容的手機投屏功能送出 | 平台、背景運作、鎖屏後行為與主機資料傳輸方式 |
+- 優先使用 macOS 內建 AirPlay 螢幕鏡像功能，目標是將自拍屏用作獨立延伸顯示器。
+- 第一次連線由使用者在 macOS 控制中心選擇裝置；成功後在顯示器設定確認延伸模式。實際選單依 macOS 版本與接收器能力而異。
+- APP 初步可採 SwiftUI / AppKit，在選定顯示器呈現無邊框儀表板；這是待實作方案。
+- APP 可處理偵測顯示器、視窗定位、文字排版、資料更新；自動配對與斷線後無人值守重連尚未驗證，不先承諾。
+- 接收器若必須讓 Mac 加入自身熱點，還需驗證同時上網；若能加入既有區域網路，需確認能與 Mac 相互發現。目前沒有確認候選支援哪種模式。
+- 無線畫面仍需連續傳送，不能因只顯示少量文字就宣稱不耗串流資源；實際 CPU、網路與穩定性待測。
+- USB 用於常駐供電；候選能否邊充邊顯示與關閉休眠仍需確認。
 
-Microsoft 與 Apple 的文件說明各自系統的投屏能力，不能用來證明任一自拍屏一定相容。
+Apple 文件說明 macOS 的延伸、鏡像與 AirPlay 能力；MiraScreen 官網亦泛稱支援 Mac，但兩者都不能證明賣場這款 3.97 吋自拍屏已與本專案的 Mac mini 相容。
 
 ## 第一輪候選
 
 ### MiraScreen 磁吸無線投影自拍螢幕（3.97 吋、AirPlay）
 
 - 賣場列示 800×480、磁吸、AirPlay 與 Miracast。
-- 神腦生活頁面列 NT$1,399；價格、庫存與交期以結帳為準。
+- 神腦生活頁面列 NT$1,399，查詢時顯示「補貨中」；不能視為現貨。
+- iOPEN Mall / Wooo 3C 頁面列 NT$1,790、預購與預計 14 天出貨；該擷取內容可能較舊，需向賣家重新確認。
+- 價格、庫存與交期以賣家即時確認或結帳為準。
 - 商品頁主要說明手機使用，尚無這個型號在本專案電腦上的連線證據。
 - 精確型號、電腦延伸顯示、邊充邊用、自動休眠與斷線重連仍需確認。
 - 狀態：優先查證候選，尚未定案採購。
 
 購買頁：https://online.senao.com.tw/Mart/1392503
-規格頁：https://udesign.uniicreative.com/mall/cus/cat/Cc1c02.do?dc_cargxuid_0=DU00123225
+備選賣場：https://mall.iopenmall.tw/056151/index.php?action=product_detail&prod_no=P5615113719001
+規格參考：https://www.etmall.com.tw/i/7882228
 
 ### 附件約 NT$600–863 的白牌自拍屏
 
@@ -70,7 +75,7 @@ Microsoft 與 Apple 的文件說明各自系統的投屏能力，不能用來證
 
 ## 採購前與到貨驗收
 
-1. 確認 APP 執行平台及精確硬體型號。
+1. 已確認 Mac mini；採購前仍須確認精確自拍屏型號與 macOS 相容性。
 2. 確認從該主機投放獨立儀表板的可行路徑。
 3. 接電連續顯示 8 小時，不因靜止畫面而休眠。
 4. 網路中斷再恢復後能重新連線；記錄需不需要人工操作。
@@ -86,5 +91,6 @@ Microsoft 與 Apple 的文件說明各自系統的投屏能力，不能用來證
 - Windows Miracast 支援檢查：https://support.microsoft.com/en-us/windows/hardware/display-graphics/fix-connections-to-wireless-displays-or-docks-in-windows
 - Mac 延伸、鏡像與 AirPlay 顯示：https://support.apple.com/guide/mac-help/extend-mirror-mac-desktop-multiple-displays-mchlb5f905a1/27/mac/27
 - MiraScreen 候選：https://online.senao.com.tw/Mart/1392503
-- 候選規格：https://udesign.uniicreative.com/mall/cus/cat/Cc1c02.do?dc_cargxuid_0=DU00123225
+- 候選規格：https://www.etmall.com.tw/i/7882228
+- MiraScreen 一般無線接收器功能（非該自拍屏的相容性證據）：https://mirascreen.com/pages/wireless-display-key-features
 - ESP32 備選原廠資料：https://docs.waveshare.com/ESP32-S3-Touch-LCD-4.3B
